@@ -1,0 +1,14 @@
+{
+  "name": "312-bot",
+  "version": "1.0.0",
+  "description": "Bot para discord del 312.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tiburon",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.2.0"
+  }
+}
