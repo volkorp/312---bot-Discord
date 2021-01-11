@@ -5,12 +5,14 @@ const Discord = require('discord.js');
 const fs = require('fs');
 const News = require('./news.js');
 const Menus = require('./menus.js');
+const DirectMessages = require('./modules/directMessages.js')
 const { prefix, token, saludos } = require('./config.json');
 
 // Objects from classes
 const client = new Discord.Client();
 const menu = new Menus();
 const news = new News();
+const directMessages = new DirectMessages();
 
 //Ready
 client.on('ready', () => {
@@ -19,33 +21,38 @@ client.on('ready', () => {
 
 
 // Braindead
-client.on('message', message => {
-  // Comprobar prefijo
+client.on('message', message => {  
+  // DM
+  if (message.channel.type === "dm") {
+    directMessages.christmas(message, client);
+    return;
+  }
+
+  // Check prefix
   if (!message.content.startsWith(prefix) || message.author.bot) return;
 
   // Args
   let args = message.content.toLowerCase().split(" ");
 
-  // DM
-  if (message.channel.type == "dm") {
-    message.author.send("¡Hola! Aún no está listo el sistema de mensajes privados, lo siento :).");
-  }
+
 
   switch (args[1]) {
     // TEST
     case 'test':
-      console.log(message.author.toString());
 
-      var m = JSON.parse(fs.readFileSync('data.json'));
+            
+      //console.log(message.author.toString());
 
-      m.forEach(function (p) {
-        console.log(p);
-      });
+      //var m = JSON.parse(fs.readFileSync('data.json'));
 
-      
+      //m.forEach(function (p) {
+      //  console.log(p);
+      //});
+
+
 
       //fs.writeFile('data.json', JSON.stringify(tib), function () {
-      console.log("¡Datos guardados!");
+      //console.log("¡Datos guardados!");
       //});
       break;
 
