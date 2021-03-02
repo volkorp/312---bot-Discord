@@ -1,6 +1,6 @@
 fs = require('fs');
 
-class DirectMessagesRecording {
+class xmasMessagesRecording {
     constructor() { }
 
     record(message, author, client, messageObject) {
@@ -48,4 +48,4 @@ class DirectMessagesRecording {
     }
 }
 
-module.exports = DirectMessagesRecording;
+module.exports = xmasMessagesRecording;

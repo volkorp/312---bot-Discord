@@ -1,9 +1,9 @@
 fs = require('fs');
 
-const DirectMessagesRecording = require('./directMessagesRecording.js')
-const directMessagesRecording = new DirectMessagesRecording();
+const xmasMessagesRecording = require('./xmasMessagesRecording.js')
+const directMessagesRecording = new xmasMessagesRecording();
 
-class DirectMessages {
+class xmasMessager {
     constructor() { }
 
     christmas(message, client) {
@@ -348,16 +348,6 @@ class DirectMessages {
             resolve();
         });
     }
-
-    // BETA
-    //progreso = [{ usuario, progreso }];
-    // addProgress(message) {
-    //  this.progreso.push(message.author.toString(), 3);
-
-    //  for (usuarios in this.progreso) {
-    //     console.log(usuarios.usuario);
-    // }
-    // }
 }
 
-module.exports = DirectMessages;
+module.exports = xmasMessager;

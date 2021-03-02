@@ -3,15 +3,14 @@
 // Setting up imports
 const Discord = require('discord.js');
 const fs = require('fs');
-const News = require('./news.js');
-const Menus = require('./menus.js');
-const DirectMessages = require('./modules/directMessages.js')
-const { prefix, token, saludos } = require('./config.json');
+const Menus = require('./assets/embeds/menus.js');
+const DirectMessages = require('./modules/navidad/xmasMessager.js');
+const { prefix, token } = require('./config.json');
+const { saludos } = require('./assets/languaje/general.json');
 
 // Objects from classes
 const client = new Discord.Client();
 const menu = new Menus();
-const news = new News();
 const directMessages = new DirectMessages();
 
 //Ready
@@ -21,10 +20,14 @@ client.on('ready', () => {
 
 
 // Braindead
-client.on('message', message => {  
+client.on('message', message => {
   // DM
   if (message.channel.type === "dm") {
-    directMessages.christmas(message, client);
+    if (xmas === "enabled") {
+      directMessages.christmas(message, client);
+    } else {
+      message.author.send("Aún no están activos los mensajes privados, ¡pregunta a un/a scouter! ");
+    }
     return;
   }
 
@@ -34,26 +37,12 @@ client.on('message', message => {
   // Args
   let args = message.content.toLowerCase().split(" ");
 
-
-
   switch (args[1]) {
     // TEST
     case 'test':
-
-            
-      //console.log(message.author.toString());
-
-      //var m = JSON.parse(fs.readFileSync('data.json'));
-
-      //m.forEach(function (p) {
-      //  console.log(p);
-      //});
-
-
-
-      //fs.writeFile('data.json', JSON.stringify(tib), function () {
-      //console.log("¡Datos guardados!");
-      //});
+      // let rawdata = fs.readFileSync('modules.json');
+      // let student = JSON.parse(rawdata);
+      // console.log(student.xmas);
       break;
 
     // SALUDOS
@@ -99,7 +88,8 @@ client.on('message', message => {
     // 6. SCOUTERS
     case 'scouter':
       // Comprueba si la persona que utiliza el comando tiene el rol "kraal"
-      if (message.member.roles.cache.some(rol => rol.name === "RPG Player")) {
+      if (message.member.roles.cache.some(rol => rol.name === "Kraal")) {
+        console.log("Correcto");
         // TODO menú de ayuda scouters
       } else { message.channel.send("No tienes permiso para utilizar este comando. :sweat_smile:") }
       break;
