@@ -1,5 +1,6 @@
 {
     "xmas": "disabled",
     "summer": "disabled",
-    "scapeRoom": "enabled"
+    "scapeRoom": "enabled",
+    "PAI": "enabled"
 }

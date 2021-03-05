@@ -3,7 +3,7 @@ fs = require('fs');
 const xmasMessagesRecording = require('./xmasMessagesRecording.js')
 const directMessagesRecording = new xmasMessagesRecording();
 
-class xmasMessager {
+class XmasMessager {
     constructor() { }
 
     christmas(message, client) {
@@ -350,4 +350,4 @@ class xmasMessager {
     }
 }
 
-module.exports = xmasMessager;
+module.exports = XmasMessager;

@@ -1,0 +1,10 @@
+{
+    "discordId":"",
+    "data": {
+        "name":"",
+        "rank":"",
+        "experience":"",
+        "completedMissions":"",
+        "mentor":""
+    }
+}
